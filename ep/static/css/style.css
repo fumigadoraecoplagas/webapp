@@ -1,33 +1,39 @@
-/* style.css */
-body {
-    font-family: Arial, sans-serif; /* Tipografía estándar y legible */
-    background-color: #f9f9f9; /* Fondo claro */
-    color: #333; /* Color de texto oscuro para contrastar con el fondo claro */
+/* Asegura que el cuerpo del documento ocupa el alto completo de la ventana */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif; /* O la fuente que prefieras */
 }
 
-a, button {
-    background-color: #4CAF50; /* Color verde principal */
+.login-container {
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.button {
+    background-color: #4CAF50; /* Verde */
     color: white;
-    padding: 8px 16px;
+    border: none;
+    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border: none;
-    border-radius: 4px; /* Botones con bordes redondeados */
-    transition: background-color 0.3s;
+    border-radius: 5px;
 }
 
-a:hover, button:hover {
-    background-color: #45a049; /* Un tono más oscuro de verde para el hover */
-}
-
-.secondary {
-    background-color: #fdd835; /* Color amarillo secundario */
-}
-
-.secondary:hover {
-    background-color: #c6a700; /* Un tono más oscuro de amarillo para el hover */
+.error-message {
+    color: red;
+    font-weight: bold;
 }
