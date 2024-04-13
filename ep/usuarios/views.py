@@ -21,7 +21,10 @@ def sign_in(request):
         except:
             # Si hay un error (credenciales inválidas, por ejemplo), muestra un mensaje
             messages.error(request, "Correo electrónico o contraseña incorrectos")
-            return render(request, 'usuarios/sign_in.html', {'message': 'Correo electrónico o contraseña incorrectos'})
+            return render(request, 'usuarios/error.html', {'message': 'Correo electrónico o contraseña incorrectos'})
     else:
         # Si no es una solicitud POST, simplemente renderiza la página de inicio de sesión
         return render(request, 'usuarios/sign_in.html')
+
+def home(request):
+    return render(request, 'usuarios/home.html')
