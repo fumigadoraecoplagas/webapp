@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import firebase_admin
 from firebase_admin import credentials
-
+import pyrebase
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'ep.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # Agrega la carpeta de templates aquí
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,6 +69,10 @@ TEMPLATES = [
         },
     },
 ]
+
+
+
+
 
 WSGI_APPLICATION = 'ep.wsgi.application'
 
@@ -117,7 +122,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -126,3 +136,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 cred = credentials.Certificate('credentials.json')
 firebase_admin.initialize_app(cred)
+
+FIREBASE_CONFIG = {
+    "apiKey": "AIzaSyBjzNfh1HfcDMekUXVYd8UcuCappKK633E",
+    "authDomain": "ecoplagasgerencia.firebaseapp.com",
+    "databaseURL": "https://ecoplagasgerencia-default-rtdb.firebaseio.com",
+    "projectId": "ecoplagasgerencia",
+    "storageBucket": "ecoplagasgerencia.appspot.com",
+    "messagingSenderId": "558457330941",
+    "appId": "1:558457330941:web:886165e07dde3bfe0af294",
+    "measurementId": "G-LC1JWGZPKT"
+}
+
+firebase = pyrebase.initialize_app(FIREBASE_CONFIG)
