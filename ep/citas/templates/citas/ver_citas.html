@@ -1,13 +1,30 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Citas</title>
+    {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <!-- FullCalendar CSS -->
     <link href='https://unpkg.com/fullcalendar@5/main.min.css' rel='stylesheet' />
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%; /* Asegura que el body toma el alto completo de la ventana */
+            width: 100%;
+        }
+        .container {
+            height: 100%; /* Ocupa todo el espacio vertical disponible */
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        #calendar {
+            flex-grow: 1; /* Permite que el calendario crezca y ocupe todo el espacio disponible */
+        }
+    </style>
 </head>
 <body>
     <div class="container">

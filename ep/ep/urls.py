@@ -8,6 +8,7 @@ urlpatterns = [
     # Incluye las URLs de otras aplicaciones si es necesario
     path('usuarios/', include('usuarios.urls')),
     path('clientes/', include('clientes.urls')),
-    path('citas/', include('citas.urls', namespace='citas')),  # Incluye las URLs de la aplicación citas
+    path('citas/', include('citas.urls')),  # Asegúrate de que 'citas.urls' es el path correcto a tu app 'citas'
+
 
 ]

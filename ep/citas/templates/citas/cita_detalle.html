@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de la Cita</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Detalles de la Cita</h1>
+        <p>Cliente: {{ cita.cliente }}</p>
+        <p>Fecha: {{ cita.fecha_hora }}</p>
+        <p>Dirección: {{ cita.direccion }}</p>
+        <p>Empleado Asignado: {{ cita.empleado }}</p>
+        <p>Tipo de Servicio: {{ cita.tipo_servicio }}</p>
+        <p>Comentarios: {{ cita.comentarios }}</p>
+        <p>Precio: ${{ cita.precio }}</p>
+        <a href="{% url 'citas:ver_citas' %}">Regresar a la lista de citas</a>
+    </div>
+</body>
+</html>

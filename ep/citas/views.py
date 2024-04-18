@@ -7,6 +7,7 @@ from dateutil import parser
 from datetime import timedelta
 from django.shortcuts import render, get_object_or_404
 from .models import Cita  # Asumiendo que tienes un modelo Cita
+from django.urls import reverse
 
 # Configuración inicial de Firebase
 firebase = pyrebase.initialize_app(settings.FIREBASE_CONFIG)
@@ -40,8 +41,8 @@ def citas_json(request):
                 eventos.append({
                     'title': f"{value.get('cliente', 'Desconocido')}",
                     'start': fecha_hora.isoformat(),
-                    'end': (fecha_hora + timedelta(hours=1)).isoformat(),  # Asumiendo duración de 1 hora
-                    'url': f"/cita/{key}/"  # Asumiendo que existe una ruta para ver detalles de la cita
+                    'end': (fecha_hora + timedelta(hours=1)).isoformat(),
+                    'url': reverse('citas:cita_detalle', args=[key])
                 })
     return JsonResponse(eventos, safe=False)
 # def citas_json(request):
@@ -60,5 +61,13 @@ def ver_citas(request):
 
 
 def cita_detalle(request, cita_id):
-    cita = get_object_or_404(Cita, pk=cita_id)  # Asegúrate de que esto coincida con cómo se identifican tus citas
-    return render(request, 'citas/cita_detalle.html', {'cita': cita})
+    cita = db.child("citas").child(cita_id).get().val()
+    if cita:
+        # Si 'fecha_hora' es un campo, parsearlo
+        if 'fecha_hora' in cita:
+            cita['fecha_hora'] = parser.parse(cita['fecha_hora']).strftime('%d/%m/%Y %H:%M')
+
+        # Añade más campos aquí si es necesario
+        return render(request, 'citas/cita_detalle.html', {'cita': cita})
+    else:
+        return HttpResponse('Cita no encontrada', status=404)
