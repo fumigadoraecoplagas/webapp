@@ -7,4 +7,7 @@ urlpatterns = [
     path('', user_views.sign_in, name='sign_in'),  # Establece sign_in como la página de inicio
     # Incluye las URLs de otras aplicaciones si es necesario
     path('usuarios/', include('usuarios.urls')),
+    path('clientes/', include('clientes.urls')),
+    path('citas/', include('citas.urls', namespace='citas')),  # Incluye las URLs de la aplicación citas
+
 ]

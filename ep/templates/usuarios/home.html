@@ -25,28 +25,36 @@
             text-align: right;
             box-sizing: border-box;
         }
-        #header a {
-            color: white;
-            text-decoration: none;
-            margin-left: 10px;
-        }
         #vertical-menu {
-            flex-grow: 1;
             display: flex;
-            flex-direction: column-reverse;
+            flex-direction: column;
             align-items: center;
             margin: 20px;
         }
+        
+        #vertical-menu a {
+            text-decoration: none;  /* Remueve subrayado de los enlaces */
+            color: inherit;         /* Mantiene el color del texto heredado */
+            width: 100%;            /* Asegura que el enlace ocupe todo el ancho posible para alinear los botones */
+        }
+        
         .menu-button {
             padding: 10px 20px;
-            margin: 5px;
-            background-color: white;
-            color: #4CAF50;
-            border: 1px solid #4CAF50;
+            margin: 5px 0;           /* Asegura margen solo arriba y abajo */
+            background-color: #4CAF50;
+            color: white;
+            border: none;
             border-radius: 5px;
             cursor: pointer;
-            width: 80%;
+            width: 100%;              /* Establece un ancho consistente para todos los botones */
+            text-align: center;      /* Centra el texto en el botón */
+            display: block;          /* Hace que el botón se comporte como un bloque, llenando el enlace */
         }
+        
+        .menu-button:hover {
+            background-color: #45a049; /* Un ligero cambio de color al pasar el mouse */
+        }
+        
     </style>
 </head>
 <body>
@@ -58,8 +66,10 @@
         {% endif %}
     </div>
     <div id="vertical-menu">
-        <button class="menu-button">Opción 1</button>
-        <button class="menu-button">Opción 2</button>
+        <a href="{% url 'clientes:create_cliente' %}"><button class="menu-button">Registrar Cliente</button></a>
+        <a href="{% url 'clientes:list_clientes' %}"><button class="menu-button">Ver Clientes</button></a>
+        <a href="{% url 'citas:crear_cita' %}"><button class="menu-button">Crear Cita</button></a>
+        <a href="{% url 'citas:ver_citas' %}"><button class="menu-button">Ver Citas</button></a>
         <button class="menu-button">Opción 3</button>
         <button class="menu-button">Opción 4</button>
     </div>

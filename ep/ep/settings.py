@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'clientes',
+    'usuarios',
+    'citas',
 ]
 
 MIDDLEWARE = [
@@ -117,6 +120,9 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+# Establece la zona horaria predeterminada para tu proyecto
+TIME_ZONE = 'America/Costa_Rica'
 
 
 # Static files (CSS, JavaScript, Images)

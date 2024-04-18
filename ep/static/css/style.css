@@ -1,39 +1,39 @@
-/* Asegura que el cuerpo del documento ocupa el alto completo de la ventana */
-html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Arial, sans-serif; /* O la fuente que prefieras */
+.form-control {
+    width: 100%;  /* Asegura que todos los campos ocupen el mismo ancho */
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Asegura que el padding y border sean incluidos en el ancho total */
+    margin-bottom: 10px; /* Espacio entre campos */
 }
 
-.login-container {
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.form-check-input {
+    margin-top: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px; /* Ajusta según la estética deseada */
+    background-color: #fff;
     padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
     border-radius: 8px;
-}
-
-.form-group {
-    margin-bottom: 15px;
+    margin: 20px auto;
 }
 
 .button {
-    background-color: #4CAF50; /* Verde */
+    background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    padding: 10px 15px;
+    border-radius: 4px;
     cursor: pointer;
-    border-radius: 5px;
+    display: block; /* Asegura que el botón ocupe toda la anchura del contenedor */
+    width: 100%;
+    text-align: center;
 }
 
-.error-message {
-    color: red;
-    font-weight: bold;
+.button:hover {
+    background-color: #45a049;
 }
