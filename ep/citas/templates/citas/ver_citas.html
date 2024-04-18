@@ -6,46 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Citas</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- FullCalendar CSS -->
+    <link href='https://unpkg.com/fullcalendar@5/main.min.css' rel='stylesheet' />
 </head>
 <body>
     <div class="container">
         <h1>Lista de Citas</h1>
-        {% if citas %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Cliente</th>
-                    <th>Fecha</th>
-                    <th>Dirección</th>
-                    <th>Precio</th>
-                    <th>Tipo</th>
-                    <th>Empleado</th>
-                    <th>Vendedor</th>
-                    <th>IVA Incluido</th>
-                    <th>Comentarios</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for cita in citas %}
-                <tr>
-                    <td>{{ cita.cliente|default:"Desconocido" }}</td>
-                    <td>{{ cita.fecha_hora|date:"d/m/Y H:i" }}</td>
-                    <td>{{ cita.direccion|default:"No especificada" }}</td>
-                    <td>${{ cita.precio_total|default:"0.00" }}</td>
-                    <td>{{ cita.tipo_fumigacion|default:"No especificado" }}</td>
-                    <td>{{ cita.empleado|default:"No asignado" }}</td>
-                    <td>{{ cita.vendedor|default:"No disponible" }}</td>
-                    <td>{{ cita.iva_incluido|yesno:"Sí,No" }}</td>
-                    <td>{{ cita.comentarios|default:"Ninguno" }}</td>
-                    
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        {% else %}
-        <p>No hay citas registradas.</p>
-        {% endif %}
+        <!-- Contenedor del Calendario -->
+        <div id='calendar'></div>
         <a href="{% url 'home' %}" class="button">Regresar a Home</a>
     </div>
+
+    <!-- FullCalendar JS -->
+    <script src='https://unpkg.com/fullcalendar@5/main.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'timeGridWeek',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: '/citas/api/citas/', // Asegúrate de que esta URL sea la correcta
+                locale: 'es'
+            });
+            calendar.render();
+        });
+    </script>
 </body>
 </html>
