@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
+from .forms import CitaForm
 
 def user_login(request):
     if request.method == 'POST':
@@ -24,3 +25,14 @@ def home(request):
 def user_logout(request):
     logout(request)
     return redirect('login')
+
+@login_required
+def crear_cita(request):
+    if request.method == 'POST':
+        form = CitaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')  # Ajusta según tu URL de redirección
+    else:
+        form = CitaForm()
+    return render(request, 'ventas/crear_cita.html', {'form': form})
