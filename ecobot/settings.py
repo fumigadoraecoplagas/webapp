@@ -42,9 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "ventas",
-    
+    'admin_interface',
+    'colorfield',
+    'ventas',
 ]
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'  # necesario para permitir la integración de temas
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
