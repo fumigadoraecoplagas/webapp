@@ -9,8 +9,16 @@
 </head>
 <body>
     <div class="container">
-        <h2>Welcome to the Home Page</h2>
-        <p>This is a protected page that requires authentication.</p>
+        {% if user.is_authenticated %}
+            <h2>Welcome, {{ user.username }}!</h2>
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        {% else %}
+            <h2>You are not logged in.</h2>
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
     </div>
 </body>
 </html>
