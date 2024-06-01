@@ -1,4 +1,6 @@
 from django.db import models
+from datetime import datetime, timedelta  # Importamos timedelta junto con datetime
+
 
 class Cita(models.Model):
     PROVINCIAS = [
