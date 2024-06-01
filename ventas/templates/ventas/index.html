@@ -1,24 +1,24 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>Inicio</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <div class="container">
         {% if user.is_authenticated %}
-            <h2>Welcome, {{ user.username }}</h2>
-            <img src="{% static 'foto.png' %}" alt="Foto" style="width: 1in; height: 1in;">
-            <form method="post" action="{% url 'logout' %}">
-                {% csrf_token %}
-                <button type="submit">Logout</button>
-            </form>
+            <h2>Bienvenido, {{ user.username }}!</h2>
+            <img src="{% static 'foto.png' %}" alt="Foto" class="logo">
+            <a href="{% url 'logout' %}" class="btn">Cerrar sesión</a>
         {% else %}
-            <h2>You are not logged in.</h2>
-            <a href="{% url 'login' %}">Login</a>
+            <h2>Iniciar sesión</h2>
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn">Iniciar sesión</button>
+            </form>
         {% endif %}
     </div>
 </body>

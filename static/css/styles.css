@@ -14,13 +14,18 @@ body {
     padding: 20px;
 }
 
+/* Container styles */
 .container {
     max-width: 600px;
     margin: auto;
     overflow: hidden;
     padding: 0 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Heading styles */
 h2 {
     text-align: center;
     margin-bottom: 20px;
@@ -29,10 +34,8 @@ h2 {
 
 /* Form styles */
 form {
-    background: #fff;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 form input[type="text"],
@@ -43,30 +46,40 @@ form button {
     margin: 5px 0 20px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    font-family: 'Arial', sans-serif;
 }
 
 form button {
-    background: #5cb85c; /* Green */
+    background: #3b5323; /* Dark green color */
     color: #fff;
     border: none;
     cursor: pointer;
 }
 
 form button:hover {
-    background: #4cae4c; /* Darker green */
+    background: #2e3f1c; /* Darker green color */
 }
 
-form .error-message {
-    color: #d9534f; /* Red */
-    margin-bottom: 15px;
+/* Button styles */
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background-color: #a40000; /* Dark red color */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 20px;
 }
 
-/* Additional styles */
-h2 {
-    color: #f0ad4e; /* Yellow */
+.btn:hover {
+    background-color: #800000; /* Darker red color */
 }
 
-body {
-    background-color: #d9534f; /* Dark red background */
+/* Logo styles */
+.logo {
+    display: block;
+    margin: 20px auto;
+    width: 1in;
+    height: 1in;
+    border-radius: 50%;
 }
