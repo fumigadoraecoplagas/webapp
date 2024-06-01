@@ -1,1 +1,1 @@
-web: gunicorn ecobot.wsgi
+web: gunicorn ecobot.wsgi --log-file -
