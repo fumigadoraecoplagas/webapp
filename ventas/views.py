@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import CitaForm
+from .models import Cita
 
 def user_login(request):
     if request.method == 'POST':
@@ -20,14 +21,13 @@ def user_login(request):
 
 @login_required
 def home(request):
-    print(request.user.is_authenticated)  # Debería imprimir True si el usuario está autenticado
     return render(request, 'ventas/index.html')
-
 
 def user_logout(request):
     logout(request)
     return redirect('login')
 
+@login_required
 def crear_cita(request):
     if request.method == 'POST':
         form = CitaForm(request.POST)
@@ -45,7 +45,7 @@ def listar_citas(request):
 
 @login_required
 def editar_cita(request, cita_id):
-    cita = get_object_or_404(Cita, pk=cita_id)
+    cita = get_object_or_404(Cita, id=cita_id)
     if request.method == 'POST':
         form = CitaForm(request.POST, instance=cita)
         if form.is_valid():
@@ -53,4 +53,4 @@ def editar_cita(request, cita_id):
             return redirect('listar_citas')
     else:
         form = CitaForm(instance=cita)
-    return render(request, 'ventas/editar_cita.html', {'form': form, 'cita_id': cita.id})
+    return render(request, 'ventas/editar_cita.html', {'form': form, 'cita_id': cita_id})
