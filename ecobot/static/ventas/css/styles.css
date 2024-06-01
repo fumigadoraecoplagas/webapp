@@ -27,6 +27,7 @@ h2 {
     color: #444;
 }
 
+/* Form styles */
 form {
     background: #fff;
     padding: 30px;
@@ -42,20 +43,30 @@ form button {
     margin: 5px 0 20px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    font-family: 'Arial', sans-serif;
 }
 
 form button {
-    background: #5cb85c;
+    background: #5cb85c; /* Green */
     color: #fff;
     border: none;
     cursor: pointer;
 }
 
 form button:hover {
-    background: #4cae4c;
+    background: #4cae4c; /* Darker green */
 }
 
 form .error-message {
-    color: red;
+    color: #d9534f; /* Red */
     margin-bottom: 15px;
+}
+
+/* Additional styles */
+h2 {
+    color: #f0ad4e; /* Yellow */
+}
+
+body {
+    background-color: #d9534f; /* Dark red background */
 }
