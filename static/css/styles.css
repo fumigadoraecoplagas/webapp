@@ -87,18 +87,23 @@ form button:hover {
 /* Button styles */
 .btn {
     display: inline-block;
-    text-decoration: none;
-    color: #fff;
-    background-color: #a40000; /* Dark red color */
     padding: 10px 20px;
-    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
     text-align: center;
-    margin-top: 20px;
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
 .btn:hover {
-    background-color: #800000; /* Darker red color */
+    background-color: #45a049;
 }
+
 
 /* Logo styles */
 .logo {

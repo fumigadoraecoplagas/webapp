@@ -20,19 +20,20 @@ def user_login(request):
 
 @login_required
 def home(request):
+    print(request.user.is_authenticated)  # Debería imprimir True si el usuario está autenticado
     return render(request, 'ventas/index.html')
+
 
 def user_logout(request):
     logout(request)
     return redirect('login')
 
-@login_required
 def crear_cita(request):
     if request.method == 'POST':
         form = CitaForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')  # Ajusta según tu URL de redirección
+            return redirect('home')
     else:
         form = CitaForm()
     return render(request, 'ventas/crear_cita.html', {'form': form})
