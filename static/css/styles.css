@@ -65,7 +65,9 @@ form {
 
 form input[type="text"],
 form input[type="password"],
-form button {
+form button,
+form .form-control,
+form .form-check-input {
     width: 100%;
     padding: 10px;
     margin: 5px 0 20px;
@@ -103,7 +105,6 @@ form button:hover {
 .btn:hover {
     background-color: #45a049;
 }
-
 
 /* Logo styles */
 .logo {
