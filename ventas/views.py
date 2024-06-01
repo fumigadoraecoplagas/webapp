@@ -37,3 +37,20 @@ def crear_cita(request):
     else:
         form = CitaForm()
     return render(request, 'ventas/crear_cita.html', {'form': form})
+
+@login_required
+def listar_citas(request):
+    citas = Cita.objects.all()
+    return render(request, 'ventas/listar_citas.html', {'citas': citas})
+
+@login_required
+def editar_cita(request, cita_id):
+    cita = get_object_or_404(Cita, pk=cita_id)
+    if request.method == 'POST':
+        form = CitaForm(request.POST, instance=cita)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_citas')
+    else:
+        form = CitaForm(instance=cita)
+    return render(request, 'ventas/editar_cita.html', {'form': form, 'cita_id': cita.id})

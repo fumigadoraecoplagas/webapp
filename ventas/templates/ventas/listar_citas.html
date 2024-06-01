@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Citas</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <img src="{% static 'foto.png' %}" alt="Foto" class="logo">
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="btn">Cerrar sesión</a>
+            {% endif %}
+        </div>
+    </header>
+    <div class="container">
+        <h2>Citas Programadas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Provincia</th>
+                    <th>Distrito</th>
+                    <th>Cliente</th>
+                    <th>Fecha y Hora de Inicio</th>
+                    <th>Duración</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cita in citas %}
+                    <tr>
+                        <td>{{ cita.provincia }}</td>
+                        <td>{{ cita.distrito }}</td>
+                        <td>{{ cita.cliente }}</td>
+                        <td>{{ cita.inicio }}</td>
+                        <td>{{ cita.duracion }}</td>
+                        <td>
+                            <a href="{% url 'editar_cita' cita.id %}" class="btn">Editar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

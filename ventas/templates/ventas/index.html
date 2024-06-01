@@ -19,8 +19,9 @@
     <div class="container">
         {% if user.is_authenticated %}
             <div class="content">
-                <h2>Bienvenido, queridos {{ user.username }}!</h2>
+                <h2>Bienvenido, {{ user.username }}!</h2>
                 <a href="{% url 'crear_cita' %}" class="btn">Crear Cita</a>
+                <a href="{% url 'listar_citas' %}" class="btn">Ver Citas</a>
                 <div class="canvas">
                     <!-- Aquí se agregarán las funcionalidades futuras -->
                 </div>
