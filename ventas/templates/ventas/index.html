@@ -4,23 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Index</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    {% if user.is_authenticated %}
-        <div class="container">
-            <h2>Bienvenido, {{ user.username }}</h2>
-            <img src="{% static 'foto.png' %}" alt="Foto">
+    <div class="container">
+        {% if user.is_authenticated %}
+            <h2>Welcome, {{ user.username }}</h2>
+            <img src="{% static 'foto.png' %}" alt="Foto" style="width: 1in; height: 1in;">
             <form method="post" action="{% url 'logout' %}">
                 {% csrf_token %}
                 <button type="submit">Logout</button>
             </form>
-        </div>
-    {% else %}
-        <script>
-            window.location.href = "{% url 'login' %}";
-        </script>
-    {% endif %}
+        {% else %}
+            <h2>You are not logged in.</h2>
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </div>
 </body>
 </html>
