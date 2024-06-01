@@ -14,20 +14,45 @@ body {
     padding: 20px;
 }
 
+/* Top bar styles */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 /* Container styles */
 .container {
-    max-width: 600px;
-    margin: auto;
-    overflow: hidden;
-    padding: 0 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Content styles */
+.content {
+    text-align: center;
+}
+
+/* Canvas styles */
+.canvas {
+    width: 100%;
+    height: 400px;
+    background-color: #e9ecef;
+    border: 2px dashed #ccc;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Heading styles */
 h2 {
-    text-align: center;
     margin-bottom: 20px;
     color: #444;
 }
@@ -77,8 +102,6 @@ form button:hover {
 
 /* Logo styles */
 .logo {
-    display: block;
-    margin: 20px auto;
     width: 1in;
     height: 1in;
     border-radius: 50%;
