@@ -29,7 +29,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['secret-spire-51689-c03677178534.herokuapp.com', 'localhost', '127.0.0.1']
 
-
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/login/'
 
 # Application definition
 
@@ -40,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
 ]
 
 MIDDLEWARE = [
