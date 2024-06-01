@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <body>
-    <h1>Bienvenido</h1>
-    <p>Este es el índice principal de la aplicación.</p>
-    {% if user.is_authenticated %}
-        <p>Hola, {{ user.username }}. Bienvenido de nuevo.</p>
-    {% else %}
-        <p>Debes iniciar sesión para acceder al contenido.</p>
-        <a href="{% url 'login' %}">Iniciar sesión</a>
-    {% endif %}
+    <h1>Welcome to the Home Page</h1>
+    <p>You are logged in as {{ user.username }}.</p>
+    <a href="{% url 'logout' %}">Logout</a>
 </body>
 </html>

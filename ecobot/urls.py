@@ -5,7 +5,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ventas/', include('ventas.urls')),
-    path('login/', auth_views.LoginView.as_view(template_name='ventas/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(next_page='/login/'), name='logout'),
-    path('', auth_views.LoginView.as_view(template_name='ventas/login.html')),  # Redirigir al login
+    path('login/', views.user_login, name='login'),
+    path('logout/', views.user_logout, name='logout'),
+    path('', views.home, name='home'),
 ]
