@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Home</title>
 </head>
 <body>
-    <h1>Bienvenido, {{ user.username }}</h1>
-    <nav>
-        <ul>
-            <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
-        </ul>
-    </nav>
+    <h1>Bienvenido</h1>
+    <p>Este es el índice principal de la aplicación.</p>
+    {% if user.is_authenticated %}
+        <p>Hola, {{ user.username }}. Bienvenido de nuevo.</p>
+    {% else %}
+        <p>Debes iniciar sesión para acceder al contenido.</p>
+        <a href="{% url 'login' %}">Iniciar sesión</a>
+    {% endif %}
 </body>
 </html>
